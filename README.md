@@ -4,7 +4,13 @@ A small, intentionally provisional turn-based planetary settlement sandbox for V
 
 ## Play
 
-Download `index.html` and open it in a browser. No installation, server, account, or network connection is required. The generated starter roster is embedded in the HTML. Its crops retain their original backgrounds; the artwork is only a temporary insert.
+Build the standalone file with Python (standard library only):
+
+```sh
+python3 build.py
+```
+
+Then open `index.html` in a browser. Playing requires no installation, server, account, or network connection. A ready-to-play build is also available in the ChatGPT project files as `Alien_Planet_v0.1.html`. The generated starter roster is embedded in the HTML. Its crops retain their original backgrounds; the artwork is only a temporary insert.
 
 Start at Main Base. Change jobs using each cohort's dropdown. End Turn produces resources. Develop Technical Education to train Workers; develop Standard Tooling to build. Set a Worker to Idle, choose Select builder, and select a clear nearby hex to construct a district. Select the completed district to construct its Workshop, then assign someone to the Workshop at the owning settlement.
 
@@ -26,15 +32,16 @@ No AI opponent, combat, growth, diplomacy, shipping simulation, research queue, 
 
 ## Modify
 
-The first `<script>` in `index.html` contains the simulation; the second contains the DOM/SVG interface. `PRESET` and `NODES` hold provisional settings and capability definitions. Commands validate before changing the serialisable state. UI selection is separate from game state. Cohorts retain their IDs when training or moving.
+Edit `src/game.html`. Its first `<script>` contains the simulation; the second contains the DOM/SVG interface. Run `python3 build.py` after editing. `PRESET` and `NODES` hold provisional settings and capability definitions. Commands validate before changing the serialisable state. UI selection is separate from game state. Cohorts retain their IDs when training or moving.
 
-This deliberately remains one file. There is no framework, dependency manager or build process. The embedded art is comparatively large; asset cleanup can wait until its visual role is clearer.
+This deliberately remains one file. There is no framework or dependency manager. The tiny build script only reinserts the original starter image into the HTML. The image is stored as numbered base64 chunks to stay within the GitHub connection’s upload size limit. The embedded art is comparatively large; asset cleanup can wait until its visual role is clearer.
 
 ## Check
 
 With Node.js installed:
 
 ```sh
+python3 build.py
 node test.cjs
 ```
 
